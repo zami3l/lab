@@ -132,7 +132,7 @@ RUN pacman -S --noconfirm wfuzz
 RUN pacman -S --noconfirm mariadb
 
 # Type : Other
-RUN pacman -S --noconfirm hexyl hexedit gnu-netcat gtfo gtfoblookup && \
+RUN pacman -S --noconfirm hexyl hexedit openbsd-netcat gtfo gtfoblookup && \
     sudo -u build yay -S --noconfirm --cleanafter android-backup-extractor-git
 
 # Type : Scripts
@@ -148,6 +148,6 @@ RUN wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/PowerShellMafia/Po
 ########################
 
 RUN rm -rf ${PATH_INSTALL}/* && \
-    yay -Sc && \
+    rm -fr ${PATH_BUILD}/.cache/yay/* && \
     rm -rf /tmp/*
 WORKDIR ${PATH_ROOT}
