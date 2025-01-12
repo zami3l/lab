@@ -16,8 +16,15 @@ Database Exploit
 * https://cve.mitre.org/
 * https://www.securityfocus.com/bid/
 
+Documentations
+---
+* https://repo.zenk-security.com/
+
 Training
 ---
 
 * https://root-me.org/
 * https://hackthebox.eu/
+* https://brainshell.fr/
+* https://vulnhub.com/
+* https://hackthissite.org/
