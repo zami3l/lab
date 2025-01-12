@@ -101,7 +101,7 @@ RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngche
 RUN pacman -S --noconfirm fcrackzip john hydra ncrack hashcat hashid hash-identifier
 
 # Type : Exploitation
-RUN pacman -S --noconfirm metasploit
+RUN pacman -S --noconfirm metasploit powersploit
 
 # Type : Search Exploit
 RUN pacman -S --noconfirm wordlistctl sploitctl && \
