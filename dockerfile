@@ -72,3 +72,12 @@ RUN pacman -S --noconfirm bind-tools net-tools
 
 # Type : Other
 RUN pacman -S --noconfirm hexyl hexedit
+
+########################
+######## CLEAN #########
+########################
+
+RUN rm -r ${PATH_INSTALL} * && \
+    pacman -Sc && \
+    rm -rf /tmp/*
+WORKDIR ${PATH_ROOT}
