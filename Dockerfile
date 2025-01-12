@@ -17,7 +17,7 @@ RUN pacman -Sy --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacm
 ARG PATH_INSTALL='/downloads'
 ARG PATH_SCRIPTS='/scripts'
 ARG PATH_BIN='/usr/bin'
-ARG PATH_WORDLIST='/usr/share/wordlist'
+ARG PATH_WORDLIST='/usr/share/wordlists'
 ARG PATH_ROOT='/root'
 ARG PATH_BUILD='/home/build'
 ARG PATH_OHMYZSH='/usr/share/oh-my-zsh'
