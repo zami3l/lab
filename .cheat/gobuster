@@ -1,0 +1,4 @@
+--==[ gobuster ]==--
+
+#Recherche dossier via wordlist
+gobuster dir -u [domain] -w /usr/share/dirb/wordlists/big.txt
