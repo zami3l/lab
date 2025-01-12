@@ -4,10 +4,14 @@ FROM archlinux
 ######### INIT #########
 ########################
 
-# UPDATE And ADD dependence
+# ADD configuration pacman
 RUN sed -i 's/NoExtract  = usr\/share\/man\/*/#NoExtract  = usr\/share\/man\/*/g' /etc/pacman.conf && \
     sed -i 's/NoExtract  = usr\/share\/locale\/*/#NoExtract  = usr\/share\/locale\/*/g' /etc/pacman.conf
-RUN pacman -Syyu --noconfirm glibc git wget man vim gzip sudo base-devel tmux
+# PURGE pacman after install
+RUN mkdir -p /etc/pacman.d/hooks
+ADD scripts/clean_package_cache.hook /etc/pacman.d/hooks
+# UPDATE And ADD dependence
+RUN pacman -Sy --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacman-contrib
 
 # PATH
 ARG PATH_INSTALL='/downloads'
@@ -28,8 +32,8 @@ RUN mkdir -p ${PATH_INSTALL}
 WORKDIR ${PATH_INSTALL}
 RUN curl -O https://blackarch.org/strap.sh
 ADD strap ${PATH_INSTALL}
-RUN sha1sum -c strap
-RUN chmod +x strap.sh && \
+RUN sha1sum -c strap && \
+    chmod +x strap.sh && \
     sh ./strap.sh && \
     rm strap.sh
 
@@ -37,28 +41,28 @@ RUN chmod +x strap.sh && \
 RUN sudo -u build git clone --depth=1 https://aur.archlinux.org/yay.git ${PATH_BUILD}/yay && \
     cd ${PATH_BUILD}/yay && \
     sudo -u build makepkg -si --noconfirm && \
-    yay -Syy
+    rm -rf ${PATH_BUILD}/.cache/*
 
 # ADD Navi and Fzf
-RUN sudo -u build yay -S --noconfirm navi && \
-    pacman -S --noconfirm fzf
-RUN git clone --depth=1 https://github.com/Zami3l/cheats.git ${PATH_ROOT}/.local/share/navi/cheats
+RUN sudo -u build yay -S --noconfirm --cleanafter navi && \
+    pacman -S --noconfirm fzf && \
+    git clone --depth=1 https://github.com/Zami3l/cheats.git ${PATH_ROOT}/.local/share/navi/cheats
 
 # ADD Zsh
-RUN pacman -S --noconfirm zsh
-RUN sudo -u build yay -S --noconfirm oh-my-zsh-git
-RUN wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/dotfiles/master/zsh/.zshrc && \
+RUN pacman -S --noconfirm zsh && \
+    sudo -u build yay -S --noconfirm --cleanafter oh-my-zsh-git && \
+    wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/dotfiles/master/zsh/.zshrc && \
     wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/dotfiles/master/zsh/.p10k.zsh && \
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${PATH_OHMYZSH}/plugins/zsh-syntax-highlighting && \
     git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${PATH_OHMYZSH}/plugins/zsh-autosuggestions && \
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${PATH_OHMYZSH}/themes/powerlevel10k
 
 # ADD Ranger
-RUN pacman -S --noconfirm ranger
-RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER}/plugins/ranger-autojump && \
+RUN pacman -S --noconfirm ranger && \
+    git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER}/plugins/ranger-autojump && \
     git clone --depth=1 https://github.com/alexanderjeurissen/ranger_devicons.git ${PATH_RANGER}/plugins/ranger_devicons && \
     wget -P ${PATH_RANGER} https://raw.githubusercontent.com/Zami3l/dotfiles/master/ranger/rc.conf && \
-    sudo -u build yay -S --noconfirm autojump
+    sudo -u build yay -S --noconfirm --cleanafter autojump
 
 # ADD fr_FR for locale
 RUN echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
@@ -97,8 +101,8 @@ RUN pacman -S --noconfirm fcrackzip john hydra ncrack hashcat
 RUN pacman -S --noconfirm metasploit
 
 # Type : Search Exploit
-RUN pacman -S --noconfirm wordlistctl sploitctl
-RUN git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt/exploitdb && \
+RUN pacman -S --noconfirm wordlistctl sploitctl && \
+    git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt/exploitdb && \
     ln -sf /opt/exploitdb/searchsploit /usr/bin/searchsploit
 
 # Type : Networking
@@ -108,8 +112,8 @@ RUN pacman -S --noconfirm bind-tools net-tools impacket
 RUN pacman -S --noconfirm sqlmap
 
 # Type : Other
-RUN pacman -S --noconfirm hexyl hexedit gnu-netcat
-RUN sudo -u build yay -S --noconfirm android-backup-extractor-git
+RUN pacman -S --noconfirm hexyl hexedit gnu-netcat && \
+    sudo -u build yay -S --noconfirm --cleanafter android-backup-extractor-git
 
 # Type : Scripts
 RUN wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1 && \
@@ -120,8 +124,7 @@ RUN wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/PowerShellMafia/Po
 ######## CLEAN #########
 ########################
 
-RUN rm -r ${PATH_INSTALL}/* && \
-    rm -r ${PATH_BUILD}/* && \
-    pacman -Sc --noconfirm && \
+RUN rm -rf ${PATH_INSTALL}/* && \
+    yay -Sc && \
     rm -rf /tmp/*
 WORKDIR ${PATH_ROOT}
