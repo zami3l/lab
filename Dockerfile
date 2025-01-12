@@ -23,6 +23,9 @@ ARG PATH_BUILD='/home/build'
 ARG PATH_OHMYZSH='/usr/share/oh-my-zsh'
 ARG PATH_RANGER='/root/.config/ranger'
 
+# ENV
+ENV PATH="/usr/bin/vendor_perl:${PATH}"
+
 # CREATE user build for using packages AUR
 RUN useradd -m build && \
     echo 'build ALL=NOPASSWD: ALL' >> /etc/sudoers
@@ -74,7 +77,7 @@ RUN echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
 # ADD Postgresql
 RUN pacman -S --noconfirm postgresql
 ADD scripts/postgres.sh ${PATH_INSTALL}
-RUN sh ${PATH_INSTALL}/postgres.sh
+#RUN sh ${PATH_INSTALL}/postgres.sh
 
 # ADD Urxvt
 #RUN pacman -S rxvt-unicode && \
