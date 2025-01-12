@@ -74,14 +74,10 @@ RUN pacman -S --noconfirm ranger && \
     wget -P ${PATH_RANGER} https://raw.githubusercontent.com/Zami3l/dotfiles/master/ranger/rc.conf && \
     sudo -u build yay -S --noconfirm --cleanafter autojump
 
-# ADD fr_FR for locale
-RUN echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
-    locale-gen fr_FR.UTF-8
-
 # ADD Postgresql
-RUN pacman -S --noconfirm postgresql
-ADD scripts/postgres.sh ${PATH_INSTALL}
-RUN sh ${PATH_INSTALL}/postgres.sh
+#RUN pacman -S --noconfirm postgresql
+#ADD scripts/postgres.sh ${PATH_INSTALL}
+#RUN sh ${PATH_INSTALL}/postgres.sh
 
 # ADD Conf vim
 RUN sudo -u build yay -S --noconfirm vim-plug && \
