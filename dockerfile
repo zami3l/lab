@@ -61,9 +61,9 @@ RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER
     sudo -u build yay -S --noconfirm autojump
 
 # ADD Urxvt
-RUN pacman -S rxvt-unicode && \
-    sudo -u build yay -S --noconfirm ttf-hack && \
-    wget -O ${PATH_ROOT}/.Xressources https://raw.githubusercontent.com/Zami3l/linux/master/rofi/.Xressources.urxvt
+#RUN pacman -S rxvt-unicode && \
+#    sudo -u build yay -S --noconfirm ttf-hack && \
+#    wget -O ${PATH_ROOT}/.Xressources https://raw.githubusercontent.com/Zami3l/linux/master/rofi/.Xressources.urxvt
 
 ########################
 ######## TOOLS #########
@@ -76,13 +76,13 @@ RUN mkdir -p ${PATH_WORDLIST} && \
     gunzip ${PATH_WORDLIST}/rockyou.txt.gz
 
 # Type : Scanner, Information-Gathering, Fingerprint, Footprinting
-RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois
+RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois enum4linux
 
 # Type : Analyzer
 RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
 
 # Type : Cracker
-RUN pacman -S --noconfirm fcrackzip john hydra
+RUN pacman -S --noconfirm fcrackzip john hydra 
 
 # Type : Exploitation
 RUN pacman -S --noconfirm metasploit
