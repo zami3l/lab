@@ -8,7 +8,6 @@ FROM archlinux
 RUN pacman -Syyu --noconfirm git wget man vim gzip sudo
 
 # PATH
-ARG PATH_INSTALL='/downloads'
 ARG PATH_BIN='/usr/bin'
 ARG PATH_WORDLIST='/usr/share/wordlist'
 ARG PATH_ROOT='/root'
@@ -46,14 +45,14 @@ RUN sudo pacman -S --noconfirm zsh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 RUN sudo wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/zsh/.zshrc && \
     sudo wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/zsh/.p10k.zsh && \
-    sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${PATH_OHMYZSH}/plugins/zsh-syntax-highlighting && \
-    sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${PATH_OHMYZSH}/plugins/zsh-autosuggestions
+    sudo git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${PATH_OHMYZSH}/plugins/zsh-syntax-highlighting && \
+    sudo git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${PATH_OHMYZSH}/plugins/zsh-autosuggestions
 
 # ADD Ranger
 RUN sudo pacman -S --noconfirm ranger
-RUN sudo git clone https://github.com/fdw/ranger-autojump.git ${PATH_RANGER}/plugins/ranger-autojump && \
-    sudo git clone https://github.com/alexanderjeurissen/ranger_devicons.git ${PATH_RANGER}/plugins/ranger_devicons && \
-    sudo git clone https://raw.githubusercontent.com/Zami3l/linux/master/ranger/rc.conf ${PATH_RANGER}/rc.conf
+RUN sudo git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER}/plugins/ranger-autojump && \
+    sudo git clone --depth=1 https://github.com/alexanderjeurissen/ranger_devicons.git ${PATH_RANGER}/plugins/ranger_devicons
+    #sudo git clone https://raw.githubusercontent.com/Zami3l/linux/master/ranger/rc.conf ${PATH_RANGER}/rc.conf
 
 ########################
 ######## TOOLS #########
@@ -79,8 +78,8 @@ RUN sudo pacman -S --noconfirm metasploit
 # Type : Search Exploit
 RUN sudo pacman -S --noconfirm wordlistctl sploitctl
 
-RUN git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt/exploitdb && \
-    ln -sf /opt/exploitdb/searchsploit /usr/bin/searchsploit
+RUN sudo git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt/exploitdb && \
+    sudo ln -sf /opt/exploitdb/searchsploit /usr/bin/searchsploit
 
 # Type : Networking
 RUN sudo pacman -S --noconfirm bind-tools net-tools
@@ -92,7 +91,7 @@ RUN sudo pacman -S --noconfirm hexyl hexedit
 ######## CLEAN #########
 ########################
 
-RUN sudo rm -r ${PATH_INSTALL} * && \
+RUN sudo rm -r ${PATH_BUILD} * && \
     sudo pacman -Sc && \
     sudo rm -rf /tmp/*
 WORKDIR ${PATH_ROOT}
