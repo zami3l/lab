@@ -38,7 +38,7 @@ RUN pacman -S --noconfirm nmap gobuster netdiscover
 RUN pacman -S --noconfirm metasploit
 
 #Type : Networking
-RUN pacman -S bind-tools
+RUN pacman -S bind-tools net-tools
 
 #Type : Other
 RUN pacman -S --noconfirm hexyl hexedit
