@@ -1,0 +1,7 @@
+--==[ fcrackzip ]==--
+
+#Mode verbeux
+fcrackzip -v [target.zip]
+
+#Wordlist (-D Attaque par dictionnaire, -p Fichier pour l'attaque par dictionnaire)
+fcrackzip  -D  -p  /usr/share/wordlist/rockyou.txt  [target.zip] 
