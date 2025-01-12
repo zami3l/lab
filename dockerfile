@@ -96,6 +96,7 @@ RUN pacman -S --noconfirm bind-tools net-tools impacket
 
 # Type : Other
 RUN pacman -S --noconfirm hexyl hexedit
+RUN sudo -u build yay -S --noconfirm android-backup-extractor-git
 
 ########################
 ######## CLEAN #########
