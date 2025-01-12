@@ -6,6 +6,9 @@ zip2john [target.zip] > target.hashes
 #Extraire le hash d'une archive .rar
 rar2john [target.rar] > target.hashes
 
+#Extraire le hash d'un backup android .ab
+androidbackup2john [target.ab] > target.hash
+
 #Utiliser l'attaque par dictionnaire
 john [target.hashes] --wordlist=/usr/share/wordlist/rockyou.txt
 
