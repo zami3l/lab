@@ -122,7 +122,8 @@ RUN pacman -S --noconfirm hexyl hexedit gnu-netcat && \
 RUN wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1 && \
     wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh && \
     wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/CiscoCXSecurity/enum4linux/master/enum4linux.pl && \
-    wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/winPEAS/winPEASbat/winPEAS.bat
+    wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/winPEAS/winPEASbat/winPEAS.bat && \
+    wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
 
 ########################
 ######## CLEAN #########
