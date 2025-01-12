@@ -1,0 +1,28 @@
+--==[ Meterpreter ]==--
+
+#Lister les processus
+ps
+
+#Migration d'une instance serveur vers un autre processus
+migrate [pid]
+
+#Tuer un processus
+kill [pid]
+
+#Obtenir l'utilisateur actuel
+getuid
+
+#Obtenir des informations sur le système
+sysinfo
+
+#Obtenir la liste de routage
+route
+
+#Lister les interfaces réseaux et leurs configurations
+ipconfig
+
+#Obtenir le shell
+shell
+
+#Upload/Download fichier
+upload/download [src] [dst]
