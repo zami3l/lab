@@ -127,7 +127,7 @@ RUN pacman -S --noconfirm radare2
 RUN pacman -S --noconfirm bind-tools net-tools impacket
 
 # Type : Web
-RUN pacman -S --noconfirm sqlmap
+RUN pacman -S --noconfirm sqlmap dsss
 
 # Type : Fuzzer
 RUN pacman -S --noconfirm wfuzz
