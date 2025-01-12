@@ -24,7 +24,7 @@ fView () {
 }
 
 fExec () {
-    echo "--> ${@}" && ${@}
+    echo "--> ${@}" && eval ${@}
 }
 
 main ${@}
