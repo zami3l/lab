@@ -1,0 +1,13 @@
+--==[ john ]==--
+
+#Extraire le hash d'une archive .zip
+zip2john [target.zip] > target.hashes
+
+#Extraire le hash d'une archive .rar
+rar2john [target.rar] > target.hashes
+
+#Utiliser l'attaque par dictionnaire
+john [target.hashes] --wordlist=/usr/share/wordlist/rockyou.txt
+
+#Remontrer le password trouvé
+john [target.hashes] --show
