@@ -67,6 +67,7 @@ RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER
 # Type : Wordlist
 RUN mkdir -p ${PATH_WORDLIST} && \
     wget -P ${PATH_WORDLIST} https://github.com/praetorian-code/Hob0Rules/raw/master/wordlists/rockyou.txt.gz && \
+    wget -P ${PATH_WORDLIST} https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt && \
     gunzip ${PATH_WORDLIST}/rockyou.txt.gz
 
 # Type : Scanner, Information-Gathering, Fingerprint, Footprinting
