@@ -5,11 +5,12 @@ FROM archlinux
 ########################
 
 # UPDATE And ADD dependence
-RUN pacman -Syyu --noconfirm git wget man vim
+RUN pacman -Syyu --noconfirm git wget man vim gzip
 
 # PATH
 ARG PATH_INSTALL='/downloads'
 ARG PATH_BIN='/usr/bin'
+ARG PATH_WORDLIST='/usr/share/wordlist'
 
 # ADD src BlackArch 
 RUN mkdir -p ${PATH_INSTALL}
@@ -32,6 +33,11 @@ ADD .cheat /root/.cheat/personal
 ########################
 ######## TOOLS #########
 ########################
+
+# Type : Wordlist
+RUN mkdir -p ${PATH_WORDLIST} && \
+    wget -P ${PATH_WORDLIST} https://github.com/praetorian-code/Hob0Rules/raw/master/wordlists/rockyou.txt.gz && \
+    gunzip ${PATH_WORDLIST}/rockyou.txt.gz
 
 # Type : Scanner, Information-Gathering, Fingerprint, Footprinting
 RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois
