@@ -69,8 +69,8 @@ RUN echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
 
 # ADD Postgresql
 RUN pacman -S --noconfirm postgresql
-ADD scripts/postgres.sh ${PATH_SOFTWARE}
-RUN sh ${PATH_SOFTWARE}/postgres.sh
+ADD scripts/postgres.sh ${PATH_INSTALL}
+RUN sh ${PATH_INSTALL}/postgres.sh
 
 # ADD Urxvt
 #RUN pacman -S rxvt-unicode && \
