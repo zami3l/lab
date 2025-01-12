@@ -24,7 +24,7 @@ main () {
 }
 
 fCopy () {
-    echo -n ${@} | xclip -sel clip
+    echo -n ${@} | xclip -sel clip 2> /dev/null
 }
 
 fView () {
