@@ -47,6 +47,8 @@ RUN sudo -u build git clone --depth=1 https://aur.archlinux.org/yay.git ${PATH_B
 RUN sudo -u build yay -S --noconfirm --cleanafter navi && \
     pacman -S --noconfirm fzf && \
     git clone --depth=1 https://github.com/Zami3l/cheats.git ${PATH_ROOT}/.local/share/navi/cheats
+ADD scripts/update_cheats.sh ${PATH_ROOT}
+RUN chmod +x ${PATH_ROOT}/update_cheats.sh
 
 # ADD Zsh
 RUN pacman -S --noconfirm zsh && \
