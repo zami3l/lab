@@ -92,7 +92,7 @@ RUN mkdir -p ${PATH_WORDLIST} && \
     gunzip ${PATH_WORDLIST}/rockyou.txt.gz
 
 # Type : Scanner, Information-Gathering, Fingerprint, Footprinting
-RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois enum4linux smbmap
+RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois enum4linux smbmap h8mail
 
 # Type : Analyzer
 RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
