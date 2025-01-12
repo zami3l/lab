@@ -24,6 +24,7 @@ ARG PATH_ROOT='/root'
 ARG PATH_BUILD='/home/build'
 ARG PATH_OHMYZSH='/usr/share/oh-my-zsh'
 ARG PATH_RANGER='/root/.config/ranger'
+ARG PATH_TMUX_PLUGINS='/root/.tmux/plugins'
 
 # ENV
 ENV PATH="/usr/bin/vendor_perl:${PATH}"
@@ -82,10 +83,15 @@ RUN pacman -S --noconfirm postgresql
 ADD scripts/postgres.sh ${PATH_INSTALL}
 RUN sh ${PATH_INSTALL}/postgres.sh
 
-# ADD Urxvt
-#RUN pacman -S rxvt-unicode && \
-#    sudo -u build yay -S --noconfirm ttf-hack && \
-#    wget -O ${PATH_ROOT}/.Xressources https://raw.githubusercontent.com/Zami3l/dotfiles/master/rofi/.Xressources.urxvt
+# ADD Conf vim
+RUN pacman -S vim-plug && \
+    wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/dotfiles/master/vim/.vimrc
+
+# ADD Conf tmux
+RUN mkdir -p .tmux/plugins && \
+    git clone --depth=1 https://github.com/tmux-plugins/tpm ${PATH_TMUX_PLUGINS}/tpm && \
+    git clone --depth=1 https://github.com/tmux-plugins/tmux-yank ${PATH_TMUX_PLUGINS}/tmux-yank && \
+    wget -P ${PATH_ROOT} https://github.com/Zami3l/dotfiles/blob/master/tmux/.tmux.conf
 
 ########################
 ######## TOOLS #########
