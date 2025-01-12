@@ -111,6 +111,9 @@ RUN pacman -S --noconfirm bind-tools net-tools impacket
 # Type : Web
 RUN pacman -S --noconfirm sqlmap
 
+# Type : Database
+RUN pacman -S --noconfirm mariadb
+
 # Type : Other
 RUN pacman -S --noconfirm hexyl hexedit gnu-netcat && \
     sudo -u build yay -S --noconfirm --cleanafter android-backup-extractor-git
