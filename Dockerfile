@@ -108,6 +108,9 @@ RUN pacman -S --noconfirm wordlistctl sploitctl && \
     git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt/exploitdb && \
     ln -sf /opt/exploitdb/searchsploit /usr/bin/searchsploit
 
+# Reversing
+RUN pacman -S --noconfirm radare2
+
 # Type : Networking
 RUN pacman -S --noconfirm bind-tools net-tools impacket
 
