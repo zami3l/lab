@@ -33,6 +33,13 @@ Database Exploit
 * https://cve.mitre.org/
 * https://www.securityfocus.com/bid/
 
+Tools
+---
+
+* https://gchq.github.io/CyberChef/
+* https://crackstation.net/
+* https://gtfobins.github.io/
+
 Documentations
 ---
 
