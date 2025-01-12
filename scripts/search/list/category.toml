@@ -1,0 +1,9 @@
+#Category
+
+[linux-privilege-escalation]
+name = "Linux - Privileges Escalation"
+info = ""
+
+[windows-privilege-escalation]
+name = "windows - Privileges Escalation"
+info = ""
