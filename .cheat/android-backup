@@ -1,0 +1,4 @@
+--==[ android-backup ]==--
+
+#Unpack
+abe unpack [backup.ab] [output.tar] [password]
