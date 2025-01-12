@@ -5,7 +5,7 @@ FROM archlinux
 ########################
 
 # UPDATE And ADD dependence
-RUN pacman -Syyu git wget --noconfirm
+RUN pacman -Syyu --noconfirm git wget man
 
 # PATH
 ARG PATH="/downloads"
@@ -31,14 +31,20 @@ RUN curl -O -L https://github.com/cheat/cheat/releases/latest/download/cheat-lin
 ######## TOOLS #########
 ########################
 
-#Type : Scanner
-RUN pacman -S --noconfirm nmap gobuster netdiscover
+# Type : Scanner
+RUN pacman -S --noconfirm nmap gobuster netdiscover dirb
 
-#Type : Exploitation
+# Type : Exploitation
 RUN pacman -S --noconfirm metasploit
 
-#Type : Networking
-RUN pacman -S bind-tools net-tools
+# Type : Networking
+RUN pacman -S --noconfirm bind-tools net-tools
 
-#Type : Other
+# Type : Search
+RUN pacman -S --noconfirm wordlistctl sploitctl
+
+RUN git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt/exploitdb && \
+    ln -sf /opt/exploitdb/searchsploit /usr/local/bin/searchsploit
+
+# Type : Other
 RUN pacman -S --noconfirm hexyl hexedit
