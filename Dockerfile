@@ -11,7 +11,7 @@ RUN sed -i 's/NoExtract  = usr\/share\/man\/*/#NoExtract  = usr\/share\/man\/*/g
 RUN mkdir -p /etc/pacman.d/hooks
 ADD scripts/clean_package_cache.hook /etc/pacman.d/hooks
 # UPDATE And ADD dependence
-RUN pacman -Sy --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacman-contrib
+RUN pacman -Sy --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacman-contrib xclip
 
 # PATH
 ARG PATH_INSTALL='/downloads'
