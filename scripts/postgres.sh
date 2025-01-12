@@ -7,11 +7,17 @@
 ######################################
 
 PATH_DB='/data/postgres'
+PATH_LIB='/var/lib/postgres'
 
+echo "Création du dossier pour la configuration..."
 mkdir -p $PATH_DB
+
+echo "Attribution des droits sur les dossiers postgres"
 chown postgres:postgres $PATH_DB
+chown postgres:postgres $PATH_LIB
+
 echo "Initialisation du cluster..."
-sudo -iu postgres initdb --locale fr_FR.UTF-8 -D $PATH_DB
+sudo -iu postgres /usr/bin/initdb --locale fr_FR.UTF-8 --pgdata=$PATH_DB
 
 echo "Initialisation des fichiers de configuration..."
 sed -i -e"s/^#listen_addresses =.*$/listen_addresses = '*'/" $PATH_DB/postgresql.conf
