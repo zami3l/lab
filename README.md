@@ -3,6 +3,18 @@ LAB
 
 My personal environment to learn hacking.
 
+Build
+---
+```dockerfile
+$ docker build --rm -f "[PATH/dockerfile]" -t hacklab:latest "lab"
+```
+
+Run
+---
+```bash
+$ docker run -ti --rm -v [MOUNT_FOLDER]:/mnt hacklab /bin/bash
+```
+
 Search engine
 ---
 
