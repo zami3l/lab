@@ -130,7 +130,7 @@ RUN pacman -S --noconfirm wfuzz
 RUN pacman -S --noconfirm mariadb
 
 # Type : Other
-RUN pacman -S --noconfirm hexyl hexedit gnu-netcat && \
+RUN pacman -S --noconfirm hexyl hexedit gnu-netcat gtfo gtfoblookup && \
     sudo -u build yay -S --noconfirm --cleanafter android-backup-extractor-git
 
 # Type : Scripts
