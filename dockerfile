@@ -3,6 +3,8 @@ FROM archlinux
 ########################
 ######### INIT #########
 ########################
+
+# UPDATE And ADD dependence
 RUN pacman -Syyu git --noconfirm
 
 # PATH
@@ -29,12 +31,11 @@ RUN curl -O -L https://github.com/cheat/cheat/releases/latest/download/cheat-lin
 ######## TOOLS #########
 ########################
 
-#Information-Gathering
-RUN pacman -S --noconfirm nmap gobuster
+#Type : Scanner
+RUN pacman -S --noconfirm nmap gobuster netdiscover
 
-#Pentest framework
+#Type : Exploitation
 RUN pacman -S --noconfirm metasploit
 
-#Other
-
+#Type : Other
 RUN pacman -S --noconfirm hexyl hexedit
