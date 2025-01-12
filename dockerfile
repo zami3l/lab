@@ -60,6 +60,9 @@ RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER
     wget -P ${PATH_RANGER} https://raw.githubusercontent.com/Zami3l/linux/master/ranger/rc.conf && \
     sudo -u build yay -S --noconfirm autojump
 
+# ADD Urxvt
+RUN pacman -S rxvt-unicode
+
 ########################
 ######## TOOLS #########
 ########################
