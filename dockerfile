@@ -36,6 +36,9 @@ ADD .cheat /root/.cheat/personal
 # Type : Scanner, Information-Gathering, Fingerprint, Footprinting
 RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois
 
+# Type : Analyzer
+RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
+
 # Type : Exploitation
 RUN pacman -S --noconfirm metasploit
 
