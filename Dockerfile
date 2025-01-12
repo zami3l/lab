@@ -65,7 +65,7 @@ RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER
 
 # ADD fr_FR for locale
 RUN echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
-    RUN locale-gen fr_FR.UTF-8
+    locale-gen fr_FR.UTF-8
 
 # ADD Postgresql
 RUN pacman -S --noconfirm postgresql
