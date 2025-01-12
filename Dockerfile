@@ -108,6 +108,9 @@ RUN git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt
 # Type : Networking
 RUN pacman -S --noconfirm bind-tools net-tools impacket
 
+# Type : Web
+RUN pacman -S --noconfirm sqlmap
+
 # Type : Other
 RUN pacman -S --noconfirm hexyl hexedit
 RUN sudo -u build yay -S --noconfirm android-backup-extractor-git
