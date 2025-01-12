@@ -11,20 +11,12 @@ main () {
     action="${1}"
     cmd="${@:2}"
 
-    if [ ${action} = "copy" ]; then
-        fCopy ${cmd}
-    elif [ ${action} = "view" ]; then
+    if [ ${action} = "view" ]; then
         fView ${cmd}
     elif [ ${action} = "exec" ]; then
         fExec ${cmd}
-    elif [ ${action} = "all" ]; then
-        fCopy ${cmd} && fExec ${cmd}
     fi
 
-}
-
-fCopy () {
-    echo -n ${@} | xclip -sel clip 2> /dev/null
 }
 
 fView () {
