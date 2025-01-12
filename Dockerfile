@@ -9,6 +9,7 @@ RUN pacman -Syyu --noconfirm git wget man vim gzip sudo base-devel
 
 # PATH
 ARG PATH_INSTALL='/downloads'
+ARG PATH_SCRIPTS='/scripts'
 ARG PATH_BIN='/usr/bin'
 ARG PATH_WORDLIST='/usr/share/wordlist'
 ARG PATH_ROOT='/root'
@@ -110,6 +111,9 @@ RUN pacman -S --noconfirm bind-tools net-tools impacket
 # Type : Other
 RUN pacman -S --noconfirm hexyl hexedit
 RUN sudo -u build yay -S --noconfirm android-backup-extractor-git
+
+# Type : Scripts
+RUN wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1
 
 ########################
 ######## CLEAN #########
