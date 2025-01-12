@@ -48,8 +48,8 @@ ADD .cheat /root/.cheat/personal
 # ADD Zsh
 RUN pacman -S --noconfirm zsh
 RUN sudo -u build yay -S --noconfirm oh-my-zsh-git
-RUN wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/zsh/.zshrc && \
-    wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/zsh/.p10k.zsh && \
+RUN wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/dotfiles/master/zsh/.zshrc && \
+    wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/dotfiles/master/zsh/.p10k.zsh && \
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${PATH_OHMYZSH}/plugins/zsh-syntax-highlighting && \
     git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${PATH_OHMYZSH}/plugins/zsh-autosuggestions && \
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${PATH_OHMYZSH}/themes/powerlevel10k
@@ -58,7 +58,7 @@ RUN wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/z
 RUN pacman -S --noconfirm ranger
 RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER}/plugins/ranger-autojump && \
     git clone --depth=1 https://github.com/alexanderjeurissen/ranger_devicons.git ${PATH_RANGER}/plugins/ranger_devicons && \
-    wget -P ${PATH_RANGER} https://raw.githubusercontent.com/Zami3l/linux/master/ranger/rc.conf && \
+    wget -P ${PATH_RANGER} https://raw.githubusercontent.com/Zami3l/dotfiles/master/ranger/rc.conf && \
     sudo -u build yay -S --noconfirm autojump
 
 # ADD fr_FR for locale
@@ -75,7 +75,7 @@ RUN sh ${PATH_SOFTWARE}/postgres.sh
 # ADD Urxvt
 #RUN pacman -S rxvt-unicode && \
 #    sudo -u build yay -S --noconfirm ttf-hack && \
-#    wget -O ${PATH_ROOT}/.Xressources https://raw.githubusercontent.com/Zami3l/linux/master/rofi/.Xressources.urxvt
+#    wget -O ${PATH_ROOT}/.Xressources https://raw.githubusercontent.com/Zami3l/dotfiles/master/rofi/.Xressources.urxvt
 
 ########################
 ######## TOOLS #########
