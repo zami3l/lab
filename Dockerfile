@@ -16,7 +16,7 @@ RUN pacman -Sy --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacm
 # PATH
 ARG PATH_INSTALL='/downloads'
 ARG PATH_SCRIPTS='/scripts'
-ARG PATH_BIN='/usr/bin'
+ARG PATH_BIN='/usr/local/bin'
 ARG PATH_WORDLIST='/usr/share/wordlists'
 ARG PATH_ROOT='/root'
 ARG PATH_BUILD='/home/build'
@@ -47,8 +47,8 @@ RUN sudo -u build git clone --depth=1 https://aur.archlinux.org/yay.git ${PATH_B
 RUN sudo -u build yay -S --noconfirm --cleanafter navi && \
     pacman -S --noconfirm fzf && \
     git clone --depth=1 https://github.com/Zami3l/cheats.git ${PATH_ROOT}/.local/share/navi/cheats
-ADD scripts/update_cheats.sh ${PATH_ROOT}
-RUN chmod +x ${PATH_ROOT}/update_cheats.sh
+ADD scripts/cheats_update ${PATH_BIN}
+RUN chmod +x ${PATH_BIN}/cheats_update
 
 # ADD Zsh
 RUN pacman -S --noconfirm zsh && \
