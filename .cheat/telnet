@@ -1,0 +1,4 @@
+--==[ telnet ]==--
+
+#Connexion
+telnet [IP] [port]
