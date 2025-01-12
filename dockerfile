@@ -5,7 +5,7 @@ FROM archlinux
 ########################
 
 # UPDATE And ADD dependence
-RUN pacman -Syyu git --noconfirm
+RUN pacman -Syyu git wget --noconfirm
 
 # PATH
 ARG PATH="/downloads"
