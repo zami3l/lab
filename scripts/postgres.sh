@@ -17,7 +17,7 @@ chown postgres:postgres $PATH_DB
 chown postgres:postgres $PATH_LIB
 
 echo "Initialisation du cluster..."
-sudo -iu postgres /usr/bin/initdb --locale fr_FR.UTF-8 --pgdata=$PATH_DB
+sudo -iu postgres /usr/bin/initdb --locale en_US.UTF-8 --pgdata=$PATH_DB
 
 echo "Initialisation des fichiers de configuration..."
 sed -i -e"s/^#listen_addresses =.*$/listen_addresses = '*'/" $PATH_DB/postgresql.conf
