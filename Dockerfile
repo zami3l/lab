@@ -13,7 +13,7 @@ ADD scripts/clean_package_cache.hook /etc/pacman.d/hooks
 # UPDATE 
 RUN pacman -Syu --noconfirm
 # Dependence
-RUN pacman -S --noconfirm glibc git wget man vim gzip sudo tmux pacman-contrib xclip python python-pip python-setuptools smbclient
+RUN pacman -S --noconfirm git wget man vim tmux pacman-contrib xclip python python-pip python-setuptools 
 
 # PATH
 ARG PATH_INSTALL='/downloads'
