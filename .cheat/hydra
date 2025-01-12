@@ -8,3 +8,6 @@ hydra [username] [password] [options] [target] [protocol] -V -f
 # protocol = ssh, smb, ftp, mysql, vnc, postgresql, telnet, ...
 # -V = Verbose
 # -f Stop si l'username est correcte
+
+#Exemple HTTP avec wordlist password
+hydra -l [username] -P [password] -V [target] http-get /directory_protected
