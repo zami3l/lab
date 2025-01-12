@@ -39,6 +39,9 @@ RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois
 # Type : Analyzer
 RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
 
+# Type : Cracker
+RUN pacman -S --noconfirm fcrackzip john
+
 # Type : Exploitation
 RUN pacman -S --noconfirm metasploit
 
