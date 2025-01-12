@@ -5,7 +5,7 @@ FROM archlinux
 ########################
 
 # UPDATE And ADD dependence
-RUN pacman -Syyu --noconfirm git wget man vim gzip sudo base-devel
+RUN pacman -Syyu --noconfirm git wget man vim gzip sudo base-devel tmux
 
 # PATH
 ARG PATH_INSTALL='/downloads'
