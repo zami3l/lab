@@ -61,7 +61,8 @@ RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER
     sudo -u build yay -S --noconfirm autojump
 
 # ADD Urxvt
-RUN pacman -S rxvt-unicode
+RUN pacman -S rxvt-unicode && \
+    sudo -u build yay -S --noconfirm ttf-hack
 
 ########################
 ######## TOOLS #########
