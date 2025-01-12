@@ -62,7 +62,8 @@ RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER
 
 # ADD Urxvt
 RUN pacman -S rxvt-unicode && \
-    sudo -u build yay -S --noconfirm ttf-hack
+    sudo -u build yay -S --noconfirm ttf-hack && \
+    wget -O ${PATH_ROOT}/.Xressources https://raw.githubusercontent.com/Zami3l/linux/master/rofi/.Xressources.urxvt
 
 ########################
 ######## TOOLS #########
