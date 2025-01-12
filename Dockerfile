@@ -113,6 +113,9 @@ RUN pacman -S --noconfirm bind-tools net-tools impacket
 # Type : Web
 RUN pacman -S --noconfirm sqlmap
 
+# Type : Fuzzer
+RUN pacman -S --noconfirm wfuzz
+
 # Type : Database
 RUN pacman -S --noconfirm mariadb
 
