@@ -32,6 +32,7 @@ ADD .cheat /root/.cheat/personal
 
 # Zsh
 RUN pacman -S zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ########################
 ######## TOOLS #########
