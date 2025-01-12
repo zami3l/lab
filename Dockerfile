@@ -27,6 +27,7 @@ ARG PATH_RANGER='/root/.config/ranger'
 
 # ENV
 ENV PATH="/usr/bin/vendor_perl:${PATH}"
+ENV TERM=xterm-256color
 
 # CREATE user build for using packages AUR
 RUN useradd -m build && \
