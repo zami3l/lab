@@ -10,8 +10,10 @@ RUN sed -i 's/NoExtract  = usr\/share\/man\/*/#NoExtract  = usr\/share\/man\/*/g
 # PURGE pacman after install
 RUN mkdir -p /etc/pacman.d/hooks
 ADD scripts/clean_package_cache.hook /etc/pacman.d/hooks
-# UPDATE And ADD dependence
-RUN pacman -Sy --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacman-contrib xclip python python-pip python-setuptools
+# UPDATE 
+RUN pacman -Syu --noconfirm
+# Dependence
+RUN pacman -S --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacman-contrib xclip python python-pip python-setuptools
 
 # PATH
 ARG PATH_INSTALL='/downloads'
