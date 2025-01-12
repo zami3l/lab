@@ -1,4 +1,4 @@
-FROM archlinux
+FROM archlinux:base-devel
 
 ########################
 ######### INIT #########
@@ -13,7 +13,7 @@ ADD scripts/clean_package_cache.hook /etc/pacman.d/hooks
 # UPDATE 
 RUN pacman -Syu --noconfirm
 # Dependence
-RUN pacman -S --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacman-contrib xclip python python-pip python-setuptools
+RUN pacman -S --noconfirm glibc git wget man vim gzip sudo tmux pacman-contrib xclip python python-pip python-setuptools smbclient
 
 # PATH
 ARG PATH_INSTALL='/downloads'
@@ -104,7 +104,7 @@ RUN mkdir -p ${PATH_WORDLIST} && \
     gunzip ${PATH_WORDLIST}/rockyou.txt.gz
 
 # Type : Scanner, Information-Gathering, Fingerprint, Footprinting
-RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois enum4linux smbmap h8mail 
+RUN pacman -S --noconfirm smbclient nmap gobuster netdiscover dirb traceroute nikto whois enum4linux smbmap h8mail 
 
 # Type : Analyzer
 RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
