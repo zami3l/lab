@@ -1,0 +1,25 @@
+--==[ sqlmap ]==--
+
+#Test de vulnérabilité
+sqlmap -u http://[target]/?param=1
+
+#Ajout d'un paramètre 
+sqlmap -u [URL] -p [ID param]
+
+#Version de la base de donnée
+sqlmap -u [URL] --banner
+
+#Utilisateur courant
+sqlmap -u [URL] --current-user
+
+#Base de donnée courante
+sqlmap -u [URL] --current-db
+
+#Privilège utilisateur courant
+sqlmap -u [URL] --is-dba
+
+#Tables courantes sans les bases systèmes
+sqlmap -u [URL] --tables --exclude-sys
+
+#Query
+sqlmap -u [URL] --sql-query "[query]"
