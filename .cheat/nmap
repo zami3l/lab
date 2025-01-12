@@ -1,0 +1,27 @@
+--==[ NMAP ]==--
+
+#Ping only
+nmap -sP [target]
+nmap -sP 192.168.0.0/24 <- Scan range
+
+#Active la détection du système d'exploitation et des versions
+#Attention solution très aggressive
+nmap -A [target]
+
+#Teste les ports ouverts pour déterminer le service en écoute et sa version
+nmap -sV [target]
+
+#Scan UDP
+nmap -sU [target]
+
+#Active la détection d'OS 
+nmap -O [target]
+
+#IPv6
+nmap -6 [target]
+
+#Choix d'une politique de temporisation
+nmap -T[0-5] [target]
+
+#Verbeux
+nmap -v / nmap -vv [target]
