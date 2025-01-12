@@ -39,13 +39,10 @@ RUN sudo -u build git clone --depth=1 https://aur.archlinux.org/yay.git ${PATH_B
     sudo -u build makepkg -si --noconfirm && \
     yay -Syy
 
-# ADD memo cmd
-RUN curl -O -L https://github.com/cheat/cheat/releases/latest/download/cheat-linux-amd64.gz && \
-    gunzip cheat-linux-amd64.gz && \
-    cp cheat-linux-amd64 ${PATH_BIN}/cheat && \
-    chmod +x ${PATH_BIN}/cheat
-ADD conf.yml /root/.config/cheat/conf.yml
-ADD .cheat /root/.cheat/personal
+# ADD Navi and Fzf
+RUN sudo -u build yay -S --noconfirm navi && \
+    pacman -S --noconfirm fzf
+RUN git clone --depth=1 https://github.com/Zami3l/cheats.git ${PATH_ROOT}/.local/share/navi/cheats
 
 # ADD Zsh
 RUN pacman -S --noconfirm zsh
