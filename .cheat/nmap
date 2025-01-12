@@ -8,8 +8,11 @@ nmap -sP 192.168.0.0/24 <- Scan range
 #Attention solution très aggressive
 nmap -A [target]
 
-#Teste les ports ouverts pour déterminer le service en écoute et sa version
+#Détecte les services en écoute et leurs versions
 nmap -sV [target]
+
+#Scan plage de ports
+nmap -p[firstPort]-[lastPort] [target]
 
 #Scan UDP
 nmap -sU [target]
