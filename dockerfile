@@ -30,6 +30,9 @@ RUN curl -O -L https://github.com/cheat/cheat/releases/latest/download/cheat-lin
 ADD conf.yml /root/.config/cheat/conf.yml
 ADD .cheat /root/.cheat/personal
 
+# Zsh
+RUN pacman -S zsh
+
 ########################
 ######## TOOLS #########
 ########################
