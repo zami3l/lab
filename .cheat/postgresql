@@ -1,0 +1,7 @@
+--==[ PostgreSQL ]==--
+
+#Start/Stop/Status le serveur PostgreSQL
+sudo -iu postgres pg_ctl [cmd] -D /data/postgresql
+
+#Connexion à PostgreSQL
+sudo -iu postgres psql -h /data/postgresql
