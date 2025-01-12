@@ -88,7 +88,7 @@ RUN git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt
     ln -sf /opt/exploitdb/searchsploit /usr/bin/searchsploit
 
 # Type : Networking
-RUN pacman -S --noconfirm bind-tools net-tools
+RUN pacman -S --noconfirm bind-tools net-tools impacket
 
 # Type : Other
 RUN pacman -S --noconfirm hexyl hexedit
