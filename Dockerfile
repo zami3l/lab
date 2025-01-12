@@ -11,7 +11,7 @@ RUN sed -i 's/NoExtract  = usr\/share\/man\/*/#NoExtract  = usr\/share\/man\/*/g
 RUN mkdir -p /etc/pacman.d/hooks
 ADD scripts/clean_package_cache.hook /etc/pacman.d/hooks
 # UPDATE And ADD dependence
-RUN pacman -Sy --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacman-contrib xclip
+RUN pacman -Sy --noconfirm glibc git wget man vim gzip sudo base-devel tmux pacman-contrib xclip python python-pip python-setuptools
 
 # PATH
 ARG PATH_INSTALL='/downloads'
@@ -97,7 +97,7 @@ RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois 
 RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
 
 # Type : Cracker
-RUN pacman -S --noconfirm fcrackzip john hydra ncrack hashcat
+RUN pacman -S --noconfirm fcrackzip john hydra ncrack hashcat hashid hash-identifier
 
 # Type : Exploitation
 RUN pacman -S --noconfirm metasploit
