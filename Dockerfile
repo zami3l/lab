@@ -113,7 +113,8 @@ RUN pacman -S --noconfirm hexyl hexedit
 RUN sudo -u build yay -S --noconfirm android-backup-extractor-git
 
 # Type : Scripts
-RUN wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1
+RUN wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1 && \
+    wget -P ${PATH_SCRIPTS} https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
 
 ########################
 ######## CLEAN #########
