@@ -60,6 +60,12 @@ RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER
     wget -P ${PATH_RANGER} https://raw.githubusercontent.com/Zami3l/linux/master/ranger/rc.conf && \
     sudo -u build yay -S --noconfirm autojump
 
+# ADD fr_FR for locale
+RUN git clone --depth=1 https://sourceware.org/git/glibc.git ${PATH_INSTALL}/glibc && \
+    cp ${PATH_INSTALL}/glibc/localedata/locales/fr_FR /usr/share/i18n/locales/ && \
+    echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
+    RUN locale-gen fr_FR.UTF-8
+
 # ADD Urxvt
 #RUN pacman -S rxvt-unicode && \
 #    sudo -u build yay -S --noconfirm ttf-hack && \
