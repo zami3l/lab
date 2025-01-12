@@ -11,6 +11,8 @@ RUN pacman -Syyu --noconfirm git wget man vim gzip
 ARG PATH_INSTALL='/downloads'
 ARG PATH_BIN='/usr/bin'
 ARG PATH_WORDLIST='/usr/share/wordlist'
+ARG PATH_ROOT='/root'
+ARG PATH_OHMYZSH='/usr/share/oh-my-zsh/'
 
 # ADD src BlackArch 
 RUN mkdir -p ${PATH_INSTALL}
@@ -33,6 +35,10 @@ ADD .cheat /root/.cheat/personal
 # Zsh
 RUN pacman -S zsh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUN wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/zsh/.zshrc && \
+    wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/zsh/.p10k.zsh && \
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${PATH_OHMYZSH}/plugins/zsh-syntax-highlighting && \
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${PATH_OHMYZSH}/plugins/zsh-autosuggestions
 
 ########################
 ######## TOOLS #########
