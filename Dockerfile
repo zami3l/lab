@@ -5,7 +5,9 @@ FROM archlinux
 ########################
 
 # UPDATE And ADD dependence
-RUN pacman -Syyu --noconfirm git wget man vim gzip sudo base-devel tmux
+RUN sed -i 's/NoExtract  = usr\/share\/man\/*/#NoExtract  = usr\/share\/man\/*/g' /etc/pacman.conf && \
+    sed -i 's/NoExtract  = usr\/share\/locale\/*/#NoExtract  = usr\/share\/locale\/*/g' /etc/pacman.conf
+RUN pacman -Syyu --noconfirm glibc git wget man vim gzip sudo base-devel tmux
 
 # PATH
 ARG PATH_INSTALL='/downloads'
@@ -62,9 +64,7 @@ RUN git clone --depth=1 https://github.com/fdw/ranger-autojump.git ${PATH_RANGER
     sudo -u build yay -S --noconfirm autojump
 
 # ADD fr_FR for locale
-RUN git clone --depth=1 https://sourceware.org/git/glibc.git ${PATH_INSTALL}/glibc && \
-    cp ${PATH_INSTALL}/glibc/localedata/locales/fr_FR /usr/share/i18n/locales/ && \
-    echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
+RUN echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
     RUN locale-gen fr_FR.UTF-8
 
 # ADD Postgresql
