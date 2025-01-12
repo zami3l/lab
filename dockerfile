@@ -13,6 +13,7 @@ ARG PATH_BIN='/usr/bin'
 ARG PATH_WORDLIST='/usr/share/wordlist'
 ARG PATH_ROOT='/root'
 ARG PATH_OHMYZSH='/usr/share/oh-my-zsh/'
+ARG PATH_RANGER='/root/.config/ranger'
 
 # ADD src BlackArch 
 RUN mkdir -p ${PATH_INSTALL}
@@ -39,6 +40,12 @@ RUN wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/z
     wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/linux/master/zsh/.p10k.zsh && \
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${PATH_OHMYZSH}/plugins/zsh-syntax-highlighting && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ${PATH_OHMYZSH}/plugins/zsh-autosuggestions
+
+#Ranger
+RUN pacman -S ranger
+RUN git clone https://github.com/fdw/ranger-autojump.git ${PATH_RANGER}/plugins/ranger-autojump && \
+    git clone https://github.com/alexanderjeurissen/ranger_devicons.git ${PATH_RANGER}/plugins/ranger_devicons && \
+    echo "default_linemode devicons" >> ${PATH_RANGER}/rc.conf
 
 ########################
 ######## TOOLS #########
