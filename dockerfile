@@ -82,7 +82,7 @@ RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois 
 RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
 
 # Type : Cracker
-RUN pacman -S --noconfirm fcrackzip john hydra 
+RUN pacman -S --noconfirm fcrackzip john hydra ncrack
 
 # Type : Exploitation
 RUN pacman -S --noconfirm metasploit
