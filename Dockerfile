@@ -88,7 +88,7 @@ RUN mkdir -p ${PATH_WORDLIST} && \
     gunzip ${PATH_WORDLIST}/rockyou.txt.gz
 
 # Type : Scanner, Information-Gathering, Fingerprint, Footprinting
-RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois enum4linux
+RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois enum4linux smbmap
 
 # Type : Analyzer
 RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
@@ -101,7 +101,6 @@ RUN pacman -S --noconfirm metasploit
 
 # Type : Search Exploit
 RUN pacman -S --noconfirm wordlistctl sploitctl
-
 RUN git clone --depth=1 https://github.com/offensive-security/exploitdb.git /opt/exploitdb && \
     ln -sf /opt/exploitdb/searchsploit /usr/bin/searchsploit
 
@@ -112,7 +111,7 @@ RUN pacman -S --noconfirm bind-tools net-tools impacket
 RUN pacman -S --noconfirm sqlmap
 
 # Type : Other
-RUN pacman -S --noconfirm hexyl hexedit
+RUN pacman -S --noconfirm hexyl hexedit gnu-netcat
 RUN sudo -u build yay -S --noconfirm android-backup-extractor-git
 
 # Type : Scripts
