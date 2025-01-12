@@ -66,6 +66,11 @@ RUN git clone --depth=1 https://sourceware.org/git/glibc.git ${PATH_INSTALL}/gli
     echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
     RUN locale-gen fr_FR.UTF-8
 
+# ADD Postgresql
+RUN pacman -S --noconfirm postgresql
+ADD scripts/postgres.sh ${PATH_SOFTWARE}
+RUN sh ${PATH_SOFTWARE}/postgres.sh
+
 # ADD Urxvt
 #RUN pacman -S rxvt-unicode && \
 #    sudo -u build yay -S --noconfirm ttf-hack && \
