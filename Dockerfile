@@ -84,7 +84,7 @@ ADD scripts/postgres.sh ${PATH_INSTALL}
 RUN sh ${PATH_INSTALL}/postgres.sh
 
 # ADD Conf vim
-RUN pacman -S vim-plug && \
+RUN sudo -u build yay -S --noconfirm vim-plug && \
     wget -P ${PATH_ROOT} https://raw.githubusercontent.com/Zami3l/dotfiles/master/vim/.vimrc
 
 # ADD Conf tmux
@@ -104,7 +104,7 @@ RUN mkdir -p ${PATH_WORDLIST} && \
     gunzip ${PATH_WORDLIST}/rockyou.txt.gz
 
 # Type : Scanner, Information-Gathering, Fingerprint, Footprinting
-RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois enum4linux smbmap h8mail
+RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois enum4linux smbmap 
 
 # Type : Analyzer
 RUN pacman -S --noconfirm pdf-parser perl-image-exiftool binwalk foremost pngcheck
