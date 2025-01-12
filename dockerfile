@@ -33,8 +33,8 @@ ADD .cheat /root/.cheat/personal
 ######## TOOLS #########
 ########################
 
-# Type : Scanner
-RUN pacman -S --noconfirm nmap gobuster netdiscover dirb
+# Type : Scanner, Information-Gathering, Fingerprint, Footprinting
+RUN pacman -S --noconfirm nmap gobuster netdiscover dirb traceroute nikto whois
 
 # Type : Exploitation
 RUN pacman -S --noconfirm metasploit
