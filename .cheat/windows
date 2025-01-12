@@ -1,7 +1,0 @@
---==[ Windows ]==--
-
-#Démarrer/Arrêter un service
-sc start/stop/query [service]
-
-#Démarrer un processus
-Start-Process [processus.exe]

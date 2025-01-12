@@ -1,4 +1,0 @@
---==[ enum4linux ]==--
-
-#Full énumération
-enum4linux -A [IP]

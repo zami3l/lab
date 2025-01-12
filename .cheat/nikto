@@ -1,4 +1,0 @@
---==[ nikto ]==--
-
-#Recherche de répertoires
-nikto -h [target] -p [port] -id [id:password]

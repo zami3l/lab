@@ -1,7 +1,0 @@
---==[ smbclient ]==--
-
-#Connexion au partage
-smbclient //[IP]/[partage] -U [user] -p [port]
-
-#Connexion avec l'utilisateur Anonymous
-smbclient //[IP]/[partage] -U Anonymous
